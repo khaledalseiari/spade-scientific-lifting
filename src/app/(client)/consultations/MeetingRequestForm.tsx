@@ -75,7 +75,7 @@ export function MeetingRequestForm() {
       {error && <p className="text-sm text-red-600">{error}</p>}
       {success && <p className="text-sm text-green-700">Request sent to your coach.</p>}
 
-      <Button type="submit" disabled={isSubmitting}>
+      <Button type="submit" loading={isSubmitting}>
         {isSubmitting ? "Sending…" : "Request meeting"}
       </Button>
     </form>

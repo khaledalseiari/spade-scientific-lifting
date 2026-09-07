@@ -54,7 +54,7 @@ export function MeetingRequestRow({
                 <Button
                   size="sm"
                   variant="accent"
-                  disabled={isPending}
+                  loading={isPending}
                   onClick={() =>
                     startTransition(async () => {
                       await acceptMeeting(request.id, request.client_id, slot);
@@ -80,7 +80,7 @@ export function MeetingRequestRow({
           )}
 
           {mode === "propose" && (
-            <div className="flex flex-wrap items-end gap-2 pt-2">
+            <div className="animate-slide-down flex flex-wrap items-end gap-2 overflow-hidden pt-2">
               <input
                 type="datetime-local"
                 className="rounded-lg border border-gray-300 px-3 py-2 text-sm"
@@ -97,7 +97,8 @@ export function MeetingRequestRow({
               <Button
                 size="sm"
                 variant="accent"
-                disabled={!proposedAt || isPending}
+                disabled={!proposedAt}
+                loading={isPending}
                 onClick={() =>
                   startTransition(async () => {
                     await proposeReschedule(request.id, request.client_id, proposedAt, note);
@@ -111,7 +112,7 @@ export function MeetingRequestRow({
           )}
 
           {mode === "decline" && (
-            <div className="flex flex-wrap items-end gap-2 pt-2">
+            <div className="animate-slide-down flex flex-wrap items-end gap-2 overflow-hidden pt-2">
               <input
                 type="text"
                 placeholder="Reason (optional)"
@@ -122,7 +123,7 @@ export function MeetingRequestRow({
               <Button
                 size="sm"
                 variant="outline"
-                disabled={isPending}
+                loading={isPending}
                 onClick={() =>
                   startTransition(async () => {
                     await declineMeeting(request.id, request.client_id, note);

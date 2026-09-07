@@ -26,7 +26,10 @@ export function SignUpForm() {
     const { data, error } = await supabase.auth.signUp({
       email: values.email,
       password: values.password,
-      options: { data: { name: values.name } },
+      options: {
+        data: { name: values.name },
+        emailRedirectTo: `${window.location.origin}/auth/confirmed`,
+      },
     });
 
     if (error) {
@@ -67,7 +70,7 @@ export function SignUpForm() {
         />
       </FormField>
       {serverError && <p className="text-sm text-red-600">{serverError}</p>}
-      <Button type="submit" className="w-full" disabled={isSubmitting}>
+      <Button type="submit" className="w-full" loading={isSubmitting}>
         {isSubmitting ? "Creating account…" : "Create account"}
       </Button>
     </form>

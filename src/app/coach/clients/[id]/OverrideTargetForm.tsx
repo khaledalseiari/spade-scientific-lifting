@@ -76,7 +76,7 @@ export function OverrideTargetForm({
       </FormField>
       {error && <p className="text-sm text-red-600">{error}</p>}
       {saved && <p className="text-sm text-green-700">Target overridden.</p>}
-      <Button type="submit" size="sm" variant="accent" disabled={isSubmitting}>
+      <Button type="submit" size="sm" variant="accent" loading={isSubmitting}>
         {isSubmitting ? "Saving…" : "Override target"}
       </Button>
     </form>

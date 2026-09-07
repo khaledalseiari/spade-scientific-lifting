@@ -79,7 +79,7 @@ export function SettingsForm({ defaults }: { defaults: FormValues }) {
       {error && <p className="text-sm text-red-600">{error}</p>}
       {saved && !error && <p className="text-sm text-green-700">Saved — targets recalculated.</p>}
 
-      <Button type="submit" disabled={isSubmitting}>
+      <Button type="submit" loading={isSubmitting}>
         {isSubmitting ? "Saving…" : "Save changes"}
       </Button>
     </form>

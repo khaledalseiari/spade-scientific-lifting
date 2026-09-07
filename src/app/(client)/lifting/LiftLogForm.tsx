@@ -121,7 +121,7 @@ export function LiftLogForm({ existingLiftNames }: { existingLiftNames: string[]
       )}
       {error && <p className="text-sm text-red-600">{error}</p>}
 
-      <Button type="submit" variant="accent" size="sm" disabled={isSubmitting}>
+      <Button type="submit" variant="accent" size="sm" loading={isSubmitting}>
         {isSubmitting ? "Logging…" : "Log lift"}
       </Button>
     </form>

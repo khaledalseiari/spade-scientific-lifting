@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { Spinner } from "@/components/ui/Spinner";
 
 type Variant = "primary" | "accent" | "support" | "outline" | "ghost";
 type Size = "sm" | "md" | "lg";
@@ -26,6 +27,8 @@ type BaseProps = {
   size?: Size;
   className?: string;
   children: React.ReactNode;
+  /** Shows a spinner and disables the button — pass your form's isSubmitting here. */
+  loading?: boolean;
 };
 
 type ButtonProps = BaseProps &
@@ -44,6 +47,7 @@ export function Button({
   size = "md",
   className,
   children,
+  loading,
   ...props
 }: ButtonProps | LinkButtonProps) {
   const classes = cn(base, variantClasses[variant], sizeClasses[size], className);
@@ -57,8 +61,16 @@ export function Button({
     );
   }
 
+  const buttonProps = props as React.ButtonHTMLAttributes<HTMLButtonElement>;
+
   return (
-    <button className={classes} {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}>
+    <button
+      className={classes}
+      disabled={loading || buttonProps.disabled}
+      aria-busy={loading}
+      {...buttonProps}
+    >
+      {loading && <Spinner />}
       {children}
     </button>
   );

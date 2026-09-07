@@ -10,7 +10,7 @@ export function Card({
   return (
     <div
       className={cn(
-        "rounded-xl border border-gray-200 bg-white p-5 shadow-sm",
+        "animate-fade-in-up rounded-xl border border-gray-200 bg-white p-5 shadow-sm",
         className,
       )}
     >

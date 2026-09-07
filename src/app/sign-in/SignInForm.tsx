@@ -48,7 +48,7 @@ export function SignInForm() {
         />
       </FormField>
       {serverError && <p className="text-sm text-red-600">{serverError}</p>}
-      <Button type="submit" className="w-full" disabled={isSubmitting}>
+      <Button type="submit" className="w-full" loading={isSubmitting}>
         {isSubmitting ? "Signing in…" : "Sign in"}
       </Button>
     </form>

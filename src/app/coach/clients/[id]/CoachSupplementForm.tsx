@@ -58,7 +58,7 @@ export function CoachSupplementForm({ clientId }: { clientId: string }) {
         <Input id="c_notes" placeholder="Why you're recommending this" {...register("notes")} />
       </FormField>
       {error && <p className="text-sm text-red-600">{error}</p>}
-      <Button type="submit" size="sm" variant="accent" disabled={isSubmitting}>
+      <Button type="submit" size="sm" variant="accent" loading={isSubmitting}>
         {isSubmitting ? "Adding…" : "Recommend supplement"}
       </Button>
     </form>

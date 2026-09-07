@@ -24,7 +24,7 @@ export function TrendBanner({
   const direction = suggestedCalorieTarget < currentCalorieTarget ? "lower" : "raise";
 
   return (
-    <div className="rounded-xl border border-brand-support bg-brand-support/20 p-4">
+    <div className="animate-slide-in-right rounded-xl border border-brand-support bg-brand-support/20 p-4">
       <p className="text-sm text-brand-ink">
         Your weight trend ({actualPct}%/week) has diverged from what your goal predicts (
         {expectedPct}%/week). Consider adjusting your target to {direction} calories to{" "}
@@ -34,7 +34,7 @@ export function TrendBanner({
         <Button
           size="sm"
           variant="accent"
-          disabled={isPending}
+          loading={isPending}
           onClick={() =>
             startTransition(async () => {
               await applySuggestedTarget();

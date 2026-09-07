@@ -119,7 +119,7 @@ export function OnboardingForm() {
 
       {serverError && <p className="text-sm text-red-600">{serverError}</p>}
 
-      <Button type="submit" className="w-full" disabled={isSubmitting}>
+      <Button type="submit" className="w-full" loading={isSubmitting}>
         {isSubmitting ? "Saving…" : "Finish setup"}
       </Button>
     </form>
